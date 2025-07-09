@@ -44,6 +44,8 @@ class FeatureInput_KS_2_Y(BaseModel):
     HAC_온도_상: float = Field(..., alias="HAC 온도_상")
     HAC_온도_하: float = Field(..., alias="HAC 온도_하")
     Steam_압력: float = Field(..., alias="Steam 압력")
+    Cutter_속도: float = Field(..., alias="Cutter 속도")
+
 
     # ---------------- Total Finish 전용 ----------------
     CAN_수: float = Field(..., alias="CAN 수")
@@ -61,7 +63,7 @@ def predict_KS_2_Y(features: FeatureInput_KS_2_Y):
     results = {}
 
     for target, feature_cols in targets.items():
-        model_path = os.path.join(model_dir, f"{target}_xgb_model.joblib")
+        model_path = os.path.join(model_dir, f"{target}_xgb_model.pkl")
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"🔴 모델 파일이 없습니다: {model_path}")
 
