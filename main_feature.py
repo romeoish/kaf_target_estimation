@@ -26,7 +26,7 @@ targets = {
     'Tenacity': ['S/P 속도', '방사 속도', 'DS-1 연신비', '원료'],
     'Cohesion': ['CR Box 압력', 'CR Roll 압력', 'HAC_온도_상', 'HAC_온도_하', 'Steam 압력',
                  'CAN 수', 'Cutter 속도', 'DS-1 연신비', '원료'],
-    'Total Finish': ['S/P 속도', '방사 속도', 'DS-1 연신비', 'CAN 수', 'DS-2 속도', 'Spray농도', '분사량']
+    'TotalFinish': ['S/P 속도', '방사 속도', 'DS-1 연신비', 'CAN 수', 'DS-2 속도', 'Spray농도', '분사량']
 }
 
 # ✅ 가중치 설정 (값 스케일 보정용)
@@ -35,7 +35,7 @@ weights = {
     'Elongation': 1,
     'Tenacity': 30,
     'Cohesion': 1,
-    'Total Finish': 300
+    'TotalFinish': 300
 }
 
 # ✅ 입력 스키마 정의
@@ -44,7 +44,7 @@ class TargetInput(BaseModel):
     Elongation: float
     Tenacity: float
     Cohesion: float
-    Total_Finish: float
+    TotalFinish: float
     원료: str
 
 
@@ -120,7 +120,7 @@ async def inverse_predict(input_data: TargetInput):
             'Elongation': input_data.Elongation,
             'Tenacity': input_data.Tenacity,
             'Cohesion': input_data.Cohesion,
-            'Total Finish': input_data.Total_Finish,
+            'TotalFinish': input_data.TotalFinish,
         }
         result = inverse_modeling(target_dict, input_data.원료)
         return result
