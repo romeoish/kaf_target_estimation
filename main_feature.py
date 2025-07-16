@@ -112,7 +112,7 @@ middleware = [
 app = FastAPI(middleware=middleware)
 
 # ✅ API 엔드포인트
-@app.post("/inverse_predict_KS_2_X")
+@app.post("/KS-2")
 async def inverse_predict(input_data: TargetInput):
     try:
         target_dict = {

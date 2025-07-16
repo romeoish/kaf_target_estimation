@@ -100,7 +100,7 @@ app = FastAPI(middleware=middleware)
 
 
 # ✅ API 엔드포인트
-@app.post("/predict_KS_2_Y")
+@app.post("/KS-2")
 async def predict_target(features: FeatureInput_KS_2_Y):
     try:
         result = predict_KS_2_Y(features)
